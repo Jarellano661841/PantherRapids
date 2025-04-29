@@ -1,0 +1,862 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panther Rapids | Embarras River Development</title>
+    <style>
+        :root {
+            --primary: #2c5282;
+            --secondary: #38a169;
+            --accent: #f6ad55;
+            --light: #f7fafc;
+            --dark: #2d3748;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1400/600') center/cover no-repeat;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .cta-button:hover {
+            background-color: #2f855a;
+            transform: translateY(-3px);
+        }
+        
+        .cta-button.secondary {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .cta-button.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .section {
+            padding: 5rem 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 1rem auto;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -1rem;
+        }
+        
+        .col {
+            flex: 1;
+            padding: 1rem;
+            min-width: 300px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-img {
+            height: 200px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .highlight {
+            background-color: var(--light);
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 2rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -17px;
+        }
+        
+        .right::after {
+            left: -17px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .team-member {
+            width: 250px;
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .team-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .investment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+        
+        .investment-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .investment-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .investment-level {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .investment-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .investment-feature {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .form-button:hover {
+            background-color: #1e3a8a;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .copyright {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 15px;
+            }
+            
+            .left::after, .right::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header> 
+                    
+	<div class="logo">PANTHER RAPIDS</div>
+        <h1>Transform the Embarras River</h1>
+        <p class="tagline">A visionary recreational development bringing economic growth and vibrant community spaces to Charleston, Illinois</p>
+        <a href="#investment" class="cta-button">Become an Investor</a>
+        <a href="#about" class="cta-button secondary">Learn More</a>
+    </header>
+    
+    <nav>
+        <div class="logo">PANTHER RAPIDS</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#investment">Investment</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Panther Rapids</h2>
+            <div class="row">
+                <div class="col">
+                    <p>Panther Rapids Recreational Development: Investing in Charleston’s Future
+Panther Rapids is an exciting multi-phase recreational project designed to transform Charleston's Embarras River into a vibrant hub for outdoor activities, economic growth, and environmental restoration. This initiative will provide a dynamic space for kayaking, riverside relaxation, trails, and community gathering spots, benefiting residents and attracting visitors from across the region..</p>
+                    <p>The project represents a strategic public-private partnership opportunity with significant ROI potential and community benefits spanning recreation, education, tourism, and environmental conservation.</p>
+                </div>
+                <div class="col">
+                    <div class="feature-img">
+                        <img src="Panther-Rapids.jpg" alt="Main Photo" style="
+    height: 200px;
+    width: 500px;
+"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="vision" class="section highlight">
+        <div class="container">
+            <h2 class="section-title">Our Vision</h2>
+            <div class="row">
+                <div class="col">
+                    <div class="feature-card">
+                        <div class="feature-img">
+                            <img src="River.jpg" alt="Riverside cafe" style="
+    width: 500px;
+    height: 250px;
+">                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">Recreational Excellence</h3>
+                            <p>Create a premier kayak surfing rapid that will attract enthusiasts from across the Midwest, complemented by a riverside beach area, multi-use trails, and river access points for diverse water activities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="feature-card">
+                        <div class="feature-img">
+                            <img src="Rental.jpg" alt="Riverside cafe" ="="" width:="" 500px;="" height:="" 250px;="" "="" style="
+    width: 500px;
+    height: 250px;
+">                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">Commercial Vibrancy</h3>
+                            <p>Develop riverside cafes and outdoor eating areas with scenic views, equipment rental facilities, and gathering spaces that create revenue streams while enhancing visitor experiences.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="feature-card">
+                        <div class="feature-img">
+                            <img src="River-open.jpg" alt="Natural habitat" style="
+    width: 500px;
+    height: 250px;
+">
+                        </div>
+                        <div class="feature-content">
+                            <h3 class="feature-title">Environmental Stewardship</h3>
+                            <p>Preserve and enhance riparian buffers, implement innovative stormwater management solutions, and create habitat improvements that demonstrate sustainable development principles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="impact" class="section">
+        <div class="container">
+            <h2 class="section-title">Economic Impact</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">5-15%</div>
+                    <div class="stat-label">Property Value Increase</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="">$500,000</div>
+                    <div class="stat-label">Annual Tourism Spending Increase</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">45+</div>
+                    <div class="stat-label">New Jobs Created</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100K+</div>
+                    <div class="stat-label">Annual Visitors</div>
+                </div>
+ <div class="stat-item">
+                    <div class="stat-number">1.5 to 1.8%</div>
+                    <div class="stat-label">Local Spending Multiplier</div>
+                </div>
+ <div class="stat-item">
+                    <div class="stat-number">1.3x</div>
+                    <div class="stat-label">Job Creation Multiplier</div>
+                </div>
+
+
+            </div>
+            
+            <div class="row" style="margin-top: 3rem;">
+                <div class="col">
+                    <h3>Summary Economic Benefits</h3>
+                    <p>Panther Rapids is expected to directly inject tourism dollars and jobs into the local economy, stimulate higher property values and new business development (indirect effects), and create multiplier-driven growth in income and employment (induced effects). In similar projects, these benefits have proven substantial. For instance, Reno’s $1.5M whitewater park was projected to pay for itself within 3 years via new visitor spending (extending tourist stays and attracting new visitors)sfgate.com. Likewise, Golden’s kayak park yields multi-million-dollar returns annually for local businessesboaterparks.com. Charleston’s investment, while moderate, should yield a strong return in economic activity, improved tax base, and enhanced community well-being.</p>
+                    <p>The project will catalyze new business development, with 8-12 new enterprises expected within a two-mile radius by Year 5, creating an additional 35-50 jobs and generating $175,000-$225,000 in annual tax revenue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="timeline" class="section highlight">
+        <div class="container">
+            <h2 class="section-title">Development Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2025-2026</h3>
+                        <p>Planning and Partner Development</p>
+                        <ul>
+                            <li>Concept approval</li>
+                            <li>Development partner recruitment</li>
+                            <li>Master planning process</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>2026-2027</h3>
+                        <p>Funding Acquisition</p>
+                        <ul>
+                            <li>State and federal grant applications</li>
+                            <li>Public-private partnership structuring</li>
+                            <li>Philanthropic campaign development</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2027-2028</h3>
+                        <p>Phase 1: Foundation</p>
+                        <ul>
+                            <li>Site preparation and basic access</li>
+                            <li>Initial trail development</li>
+                            <li>Environmental enhancement</li>
+                            <li>Utility infrastructure</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>2028-2029</h3>
+                        <p>Phase 2: Core Recreation</p>
+                        <ul>
+                            <li>Kayak surfing rapid construction</li>
+                            <li>Beach area development</li>
+                            <li>Primary trail network completion</li>
+                            <li>Basic amenities installation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2029-2030</h3>
+                        <p>Phase 3: Commercial Development</p>
+                        <ul>
+                            <li>Cafe construction</li>
+                            <li>Outdoor eating area development</li>
+                            <li>Equipment rental facility</li>
+                            <li>Enhanced visitor amenities</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Beyond 2030</h3>
+                        <p>Phase 4: Expansion &amp; Enhancement</p>
+                        <ul>
+                            <li>Additional recreational features</li>
+                            <li>Expanded programming</li>
+                            <li>Advanced amenities</li>
+                            <li>Long-term habitat improvements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="team" class="section">
+        <div class="container">
+            <h2 class="section-title">Project Leadership</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/150/150" alt="Team member">
+                    </div>
+                    <h3 class="team-name">Evan Kubicek</h3>
+                    <div class="team-role">Project Director</div>
+                    <p>Years of investment and startup work.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/150/150" alt="Team member">
+                    </div>
+                    <h3 class="team-name">Luisa Renovales</h3>
+                    <div class="team-role">Team 1: Environmental Assessment &amp; Site Analysis</div>
+                    <p>Conducts environmental assessment and site analysis.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/150/150" alt="Team member">
+                    </div>
+                    <h3 class="team-name">Ben Marshall</h3>
+                    <div class="team-role">Team 2: Legal &amp; Regulatory Framework</div>
+                    <p>Identifies and navigates all legal and regulatory requirements.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/150/150" alt="Team member">
+                    </div>
+                    <h3 class="team-name">Alicia Ramirez</h3>
+                    <div class="team-role">Team 3: Recreational Facilities Design</div>
+                    <p>Designs recreational facilities and river access points.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="" alt="Team member">
+                    </div>
+                    <h3 class="team-name">Collin Tyson</h3>
+                    <div class="team-role">Team 4: Commercial Development</div>
+                    <p>Environmental engineering specialist with 15 years of experience in sustainable development.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/150/150" alt="Team member">
+                    </div>
+                    <h3 class="team-name">Shane Atchison</h3>
+                    <div class="team-role">Team 5: Economic Analysis</div>
+                    <p>Conducts cost estimates and economic impact analysis.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/150/150" alt="Team member">
+                    </div>
+                    <h3 class="team-name">Alexis Davis</h3>
+                    <div class="team-role">Team 6: Funding &amp; Implementation</div>
+                    <p>Develops phasing plan and funding strategy.</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="/api/placeholder/150/150" alt="Team member">
+                    </div>
+                    <h3 class="team-name">Joe McNab</h3>
+                    <div class="team-role">Team 7: Community Engagement &amp; Marketing</div>
+                    <p>Creates stakeholder strategy and marketing plan.</p> 
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="investment" class="section highlight">
+        <div class="container">
+            <h2 class="section-title">Investment Opportunities</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto;">Join us in creating a landmark recreational destination that will transform Charleston's economy while enhancing community wellness and environmental stewardship.</p>
+            
+            <div class="investment-options">
+                <div class="investment-card">
+                    <div class="investment-level">Strategic Partner</div>
+                    <div class="investment-amount">$100,000+</div>
+                    <ul style="list-style: none;">
+                        <li class="investment-feature">Naming rights for major features</li>
+                        <li class="investment-feature">Priority commercial lease options</li>
+                        <li class="investment-feature">Representative on development board</li>
+                        <li class="investment-feature">Exclusive marketing opportunities</li>
+                        <li class="investment-feature">VIP access to all facilities</li>
+                    </ul>
+                    <a href="#contact" class="cta-button" style="margin-top: 1.5rem;">Become a Partner</a>
+                </div>
+                <div class="investment-card">
+                    <div class="investment-level">Major Investor</div>
+                    <div class="investment-amount">$25,000+</div>
+                    <ul style="list-style: none;">
+                        <li class="investment-feature">Facility naming opportunities</li>
+                        <li class="investment-feature">Commercial space priority</li>
+                        <li class="investment-feature">Advisory committee membership</li>
+                        <li class="investment-feature">Promotional partnership</li>
+                        <li class="investment-feature">Annual stakeholder events</li>
+                    </ul>
+                    <a href="#contact" class="cta-button" style="margin-top: 1.5rem;">Invest Now</a>
+                </div>
+                <div class="investment-card">
+                    <div class="investment-level">Supporting Investor</div>
+                    <div class="investment-amount">$1,000+</div>
+                    <ul style="list-style: none;">
+                        <li class="investment-feature">Recognition on donor wall</li>
+                        <li class="investment-feature">Early access to commercial opportunities</li>
+                        <li class="investment-feature">Quarterly investor updates</li>
+                        <li class="investment-feature">Special event invitations</li>
+                        <li class="investment-feature">Promotional considerations</li>
+                    </ul>
+                    <a href="#contact" class="cta-button" style="margin-top: 1.5rem;">Join Us</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <p>Custom investment packages are available to meet specific investor needs and interests.</p>
+                <p>All investments include detailed financial projections, risk assessments, and regular performance updates.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Connect With Us</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="Your email">
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="Your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="investment" class="form-label">Investment Interest</label>
+                    <select id="investment" class="form-input">
+                        <option value="">Select your investment interest</option>
+                        <option value="strategic">Strategic Partner ($100,000+)</option>
+                        <option value="major">Major Investor ($25,000+)</option>
+                        <option value="supporting">Supporting Investor ($1,000+)</option>
+                        <option value="custom">Custom Investment Package</option>
+                        <option value="information">Information Only</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-input form-textarea" placeholder="Tell us about your interest in Panther Rapids"></textarea>
+                </div>
+                <button type="submit" class="form-button">Submit Inquiry</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-logo">PANTHER RAPIDS</div>
+        <p>Transforming the Embarras River into Charleston's premier recreational destination</p>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#vision">Vision</a>
+            <a href="#impact">Impact</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#investment">Investment</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="social-links">
+            <a href="#" class="social-icon">FB</a>
+            <a href="#" class="social-icon">TW</a>
+            <a href="#" class="social-icon">IN</a>
+            <a href="#" class="social-icon">YT</a>
+        </div>
+        <p class="copyright">© 2025 Panther Rapids Development Project. All rights reserved.</p>
+    </footer>
+
+</body></html>   
