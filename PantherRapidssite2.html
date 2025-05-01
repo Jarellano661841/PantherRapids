@@ -24,7 +24,7 @@
         }
         
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1400/600') center/cover no-repeat;
+            background: darkblue;
             color: white;
             padding: 6rem 2rem;
             text-align: center;
@@ -468,8 +468,380 @@
             }
         }
     </style>
-</head>
-<body>
+<style>
+        @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Poppins'), url('chrome-extension://iiikmhonbbmbdjfokdmmncdohjionkmf/fonts/Poppins-Regular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 100 900;
+            src: local('Inter'), url('chrome-extension://iiikmhonbbmbdjfokdmmncdohjionkmf/fonts/Inter.ttf') format('truetype');
+        }
+    </style><style>@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap);</style><style>/* Webkit-based browsers (Chrome, Safari) */
+.custom-scroll::-webkit-scrollbar {
+  width: 9px; /* Adjust the width of the scrollbar */
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #63a8e1;
+  border-radius: 50px; /* Add rounded corners if desired */
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  border-radius: 50px;
+  border: 1px solid rgba(122, 179, 226, 0.2);
+  background-color: rgba(97, 165, 223, 0.2);
+}
+
+/* Firefox */
+.custom-scroll::-moz-scrollbar {
+  width: 9px; /* Adjust the width of the scrollbar */
+}
+
+.custom-scroll::-moz-scrollbar-thumb {
+  background-color: #63a8e1;
+  border-radius: 50px; /* Add rounded corners if desired */
+}
+
+.custom-scroll::-moz-scrollbar-track {
+  border-radius: 50px;
+  border: 1px solid rgba(122, 179, 226, 0.2);
+  background-color: rgba(97, 165, 223, 0.2);
+}
+.blue-btn-bg {
+  background: linear-gradient(89deg, #087eda -2.99%, #519bdb 87.79%);
+}
+.orange-btn-bg {
+  background: linear-gradient(89deg, #c92c17 -2.99%, #d97f1b 87.79%);
+}
+
+div#vp-selection-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 99999999999;
+}
+
+.selection-area {
+  background: rgba(46, 115, 252, 0.11);
+  border: 2px solid rgba(98, 155, 255, 0.81);
+  border-radius: 0.1em;
+}
+.selection-area-container {
+  z-index: 999999999 !important;
+}
+
+.virtualprofessor-loader {
+  margin: auto;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(0, 0, 0, 0.3);
+  border-bottom-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.virtualprofessor-answerStyle2 {
+  font-family: 'Inter', sans-serif;
+  cursor: grab;
+  display: block;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 4px;
+  height: auto;
+  position: fixed;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-image: linear-gradient(to top, #1a456b, #0278d6);
+}
+.virtualprofessor-answerStyle2 button {
+  border: none;
+  outline: none;
+}
+
+.virtualprofessor-longlogo {
+  width: 235px;
+  height: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin: auto;
+}
+
+.virtualprofessor-popupheader {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  padding: 48px 24px 24px 24px;
+  border-bottom: 1px solid rgb(234 234 234 / 0.2);
+}
+.virtualprofessor-popupclose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.virtualprofessor-logosection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.virtualprofessor-Answer {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.virtualprofessor-quicklearn {
+  text-decoration: none;
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+  margin-top: 0px;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.virtualprofessor-see-explanation-btn {
+  border-radius: 8px;
+  margin-top: 32px;
+  margin-bottom: 34px;
+  padding: 12px 20px;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-weight: 300;
+  background: linear-gradient(89deg, #087eda -2.99%, #519bdb 87.79%);
+}
+
+.virtualprofessor-another-screenshot-btn {
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 12px;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 8px;
+  background: linear-gradient(89deg, #087eda -2.99%, #519bdb 87.79%);
+}
+
+.virtualprofessor-answer-overlay {
+  width: 100%;
+  padding-right: 4px;
+}
+.virtualprofessor-answer-overlay.active {
+  max-height: 54vh;
+  overflow-y: scroll;
+}
+
+.virtualprofessor-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ebebeb;
+  width: 100%;
+  height: 72px;
+  justify-content: center;
+}
+
+.virtualprofessor-socialicons {
+  width: 100%;
+  height: auto;
+}
+
+.virtualprofessor-socialbuttons {
+  padding: 15px;
+  width: 33%;
+  background-color: darkgrey;
+  border-radius: 100px;
+  height: 45px !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.virtualprofessor-sociallist {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+}
+
+.virtualprofessor-followers {
+  font-size: 14px;
+  margin-left: 5px;
+  display: none;
+}
+
+.virtualprofessor-iconandtext-text {
+  text-decoration: none;
+}
+
+.virtualprofessor-boostgrades {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.virtualprofessor-graded {
+  background-color: red;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 25px;
+  color: white;
+}
+
+.virtualprofessor-gradea {
+  background-color: yellowgreen;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 25px;
+  color: white;
+}
+
+.virtualprofessor-answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  /* max-height: 253px; */
+  min-height: 253px;
+  /* overflow: hidden !important; */
+}
+
+.virtualprofessor-quick-learn-text {
+  margin-top: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: auto !important;
+}
+
+.virtualprofessor-answers::-webkit-scrollbar {
+  display: none !important;
+}
+
+.virtualprofessor-Answer::-webkit-scrollbar {
+  display: none !important;
+}
+
+.virtualprofessor-quicklearn::-webkit-scrollbar {
+  display: none !important;
+}
+
+.sourceText {
+  text-align: center !important;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9jb250ZW50U2NyaXB0L2NvbnRlbnRTY3JpcHQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBLDJDQUEyQztBQUMzQztFQUNFLFVBQVUsRUFBRSxzQ0FBc0M7QUFDcEQ7O0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsbUJBQW1CLEVBQUUsbUNBQW1DO0FBQzFEOztBQUVBO0VBQ0UsbUJBQW1CO0VBQ25CLDBDQUEwQztFQUMxQyx5Q0FBeUM7QUFDM0M7O0FBRUEsWUFBWTtBQUNaO0VBQ0UsVUFBVSxFQUFFLHNDQUFzQztBQUNwRDs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixtQkFBbUIsRUFBRSxtQ0FBbUM7QUFDMUQ7O0FBRUE7RUFDRSxtQkFBbUI7RUFDbkIsMENBQTBDO0VBQzFDLHlDQUF5QztBQUMzQztBQUNBO0VBQ0Usa0VBQWtFO0FBQ3BFO0FBQ0E7RUFDRSxrRUFBa0U7QUFDcEU7O0FBRUE7RUFDRSxlQUFlO0VBQ2YsTUFBTTtFQUNOLE9BQU87RUFDUCxXQUFXO0VBQ1gsWUFBWTtFQUNaLDhCQUE4QjtFQUM5QixvQkFBb0I7QUFDdEI7O0FBRUE7RUFDRSxvQ0FBb0M7RUFDcEMsMENBQTBDO0VBQzFDLG9CQUFvQjtBQUN0QjtBQUNBO0VBQ0UsNkJBQTZCO0FBQy9COztBQUVBO0VBQ0UsWUFBWTtFQUNaLFdBQVc7RUFDWCxZQUFZO0VBQ1osb0NBQW9DO0VBQ3BDLDBCQUEwQjtFQUMxQixrQkFBa0I7RUFDbEIscUJBQXFCO0VBQ3JCLHNCQUFzQjtFQUN0QixzQ0FBc0M7QUFDeEM7O0FBRUE7RUFDRTtJQUNFLHVCQUF1QjtFQUN6Qjs7RUFFQTtJQUNFLHlCQUF5QjtFQUMzQjtBQUNGOztBQUVBO0VBQ0UsZ0NBQWdDO0VBQ2hDLFlBQVk7RUFDWixjQUFjO0VBQ2QsMENBQTBDO0VBQzFDLFlBQVk7RUFDWixlQUFlO0VBQ2Ysc0JBQXNCO0VBQ3RCLGdCQUFnQjtFQUNoQixrQkFBa0I7RUFDbEIsMkRBQTJEO0FBQzdEO0FB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OztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0Usd0JBQXdCO0FBQzFCOztBQUVBO0VBQ0UsNkJBQTZCO0FBQy9CIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCB1cmwoJ2h0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzMj9mYW1pbHk9SW50ZXI6d2dodEAzMDA7NDAwOzUwMDs2MDA7NzAwOzgwMCZmYW1pbHk9Um9ib3RvOndnaHRANDAwOzUwMDs3MDAmZGlzcGxheT1zd2FwJyk7XG5cbi8qIFdlYmtpdC1iYXNlZCBicm93c2VycyAoQ2hyb21lLCBTYWZhcmkpICovXG4uY3VzdG9tLXNjcm9sbDo6LXdlYmtpdC1zY3JvbGxiYXIge1xuICB3aWR0aDogOXB4OyAvKiBBZGp1c3QgdGhlIHdpZHRoIG9mIHRoZSBzY3JvbGxiYXIgKi9cbn1cblxuLmN1c3RvbS1zY3JvbGw6Oi13ZWJraXQtc2Nyb2xsYmFyLXRodW1iIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzYzYThlMTtcbiAgYm9yZGVyLXJhZGl1czogNTBweDsgLyogQWRkIHJvdW5kZWQgY29ybmVycyBpZiBkZXNpcmVkICovXG59XG5cbi5jdXN0b20tc2Nyb2xsOjotd2Via2l0LXNjcm9sbGJhci10cmFjayB7XG4gIGJvcmRlci1yYWRpdXM6IDUwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMTIyLCAxNzksIDIyNiwgMC4yKTtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSg5NywgMTY1LCAyMjMsIDAuMik7XG59XG5cbi8qIEZpcmVmb3ggKi9cbi5jdXN0b20tc2Nyb2xsOjotbW96LXNjcm9sbGJhciB7XG4gIHdpZHRoOiA5cHg7IC8qIEFkanVzdCB0aGUgd2lkdGggb2YgdGhlIHNjcm9sbGJhciAqL1xufVxuXG4uY3VzdG9tLXNjcm9sbDo6LW1vei1zY3JvbGxiYXItdGh1bWIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjNhOGUxO1xuICBib3JkZXItcmFkaXVzOiA1MHB4OyAvKiBBZGQgcm91bmRlZCBjb3JuZXJzIGlmIGRlc2lyZWQgKi9cbn1cblxuLmN1c3RvbS1zY3JvbGw6Oi1tb3otc2Nyb2xsYmFyLXRyYWNrIHtcbiAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgcmdiYSgxMjIsIDE3OSwgMjI2LCAwLjIpO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDk3LCAxNjUsIDIyMywgMC4yKTtcbn1cbi5ibHVlLWJ0bi1iZyB7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg4OWRlZywgIzA4N2VkYSAtMi45OSUsICM1MTliZGIgODcuNzklKTtcbn1cbi5vcmFuZ2UtYnRuLWJnIHtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDg5ZGVnLCAjYzkyYzE3IC0yLjk5JSwgI2Q5N2YxYiA4Ny43OSUpO1xufVxuXG5kaXYjdnAtc2VsZWN0aW9uLW92ZXJsYXkge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHRvcDogMDtcbiAgbGVmdDogMDtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjEpO1xuICB6LWluZGV4OiA5OTk5OTk5OTk5OTtcbn1cblxuLnNlbGVjdGlvbi1hcmVhIHtcbiAgYmFja2dyb3VuZDogcmdiYSg0NiwgMTE1LCAyNTIsIDAuMTEpO1xuICBib3JkZXI6IDJweCBzb2xpZCByZ2JhKDk4LCAxNTUsIDI1NSwgMC44MSk7XG4gIGJvcmRlci1yYWRpdXM6IDAuMWVtO1xufVxuLnNlbGVjdGlvbi1hcmVhLWNvbnRhaW5lciB7XG4gIHotaW5kZXg6IDk5OTk5OTk5OSAhaW1wb3J0YW50O1xufVxuXG4udmlydHVhbHByb2Zlc3Nvci1sb2FkZXIge1xuICBtYXJnaW46IGF1dG87XG4gIHdpZHRoOiAyNHB4O1xuICBoZWlnaHQ6IDI0cHg7XG4gIGJvcmRlcjogM3B4IHNvbGlkIHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgYm9yZGVyLWJvdHRvbS1jb2xvcjogYmxhY2s7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBhbmltYXRpb246IHJvdGF0aW9uIDFzIGxpbmVhciBpbmZpbml0ZTtcbn1cblxuQGtleWZyYW1lcyByb3RhdGlvbiB7XG4gIDAlIHtcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTtcbiAgfVxuXG4gIDEwMCUge1xuICAgIHRyYW5zZm9ybTogcm90YXRlKDM2MGRlZyk7XG4gIH1cbn1cblxuLnZpcnR1YWxwcm9mZXNzb3ItYW5zd2VyU3R5bGUyIHtcbiAgZm9udC1mYW1pbHk6ICdJbnRlcicsIHNhbnMtc2VyaWY7XG4gIGN1cnNvcjogZ3JhYjtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGJveC1zaGFkb3c6IHJnYmEoMCwgMCwgMCwgMC41KSAwcHggNHB4IDRweDtcbiAgaGVpZ2h0OiBhdXRvO1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIG92ZXJmbG93LXk6IGF1dG87XG4gIG92ZXJmbG93LXg6IGhpZGRlbjtcbiAgYmFja2dyb3VuZC1pbWFnZTogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzFhNDU2YiwgIzAyNzhkNik7XG59XG4udmlydHVhbHByb2Zlc3Nvci1hbnN3ZXJTdHlsZTIgYnV0dG9uIHtcbiAgYm9yZGVyOiBub25lO1xuICBvdXRsaW5lOiBub25lO1xufVxuXG4udmlydHVhbHByb2Zlc3Nvci1sb25nbG9nbyB7XG4gIHdpZHRoOiAyMzVweDtcbiAgaGVpZ2h0OiBhdXRvO1xuICBtYXJnaW4tdG9wOiAwcHg7XG4gIG1hcmdpbi1ib3R0b206IDBweDtcbiAgbWFyZ2luOiBhdXRvO1xufVxuXG4udmlydHVhbHByb2Zlc3Nvci1wb3B1cGhlYWRlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIHBhZGRpbmc6IDQ4cHggMjRweCAyNHB4IDI0cHg7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCByZ2IoMjM0IDIzNCAyMzQgLyAwLjIpO1xufVxuLnZpcnR1YWxwcm9mZXNzb3ItcG9wdXBjbG9zZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICByaWdodDogMDtcbiAgei1pbmRleDogMTA7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLnZpcnR1YWxwcm9mZXNzb3ItbG9nb3NlY3Rpb24ge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xufVxuXG4udmlydHVhbHByb2Zlc3Nvci1BbnN3ZXIge1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgcmdiYSgwLCAwLCAwLCAwLjA2KTtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICB3aWR0aDogOTAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4udmlydHVhbHByb2Zlc3Nvci1xdWlja2xlYXJuIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZy10b3A6IDI1cHg7XG4gIHBhZGRpbmctYm90dG9tOiAyNXB4O1xuICBoZWlnaHQ6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogZmxleC1zdGFydDtcbiAgYWxpZ24tY29udGVudDogY2VudGVyO1xuICBtYXJnaW4tdG9wOiAwcHg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIG92ZXJmbG93OiBzY3JvbGw7XG59XG5cbi52aXJ0dWFscHJvZmVzc29yLXNlZS1leHBsYW5hdGlvbi1idG4ge1xuICBib3JkZXItcmFkaXVzOiA4cHg7XG4gIG1hcmdpbi10b3A6IDMycHg7XG4gIG1hcmdpbi1ib3R0b206IDM0cHg7XG4gIHBhZGRpbmc6IDEycHggMjBweDtcbiAgZGlzcGxheTogZmxleDtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZ2FwOiA4cHg7XG4gIGZvbnQtd2VpZ2h0OiAzMDA7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg4OWRlZywgIzA4N2VkYSAtMi45OSUsICM1MTliZGIgODcuNzklKTtcbn1cblxuLnZpcnR1YWxwcm9mZXNzb3ItYW5vdGhlci1zY3JlZW5zaG90LWJ0biB7XG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tYm90dG9tOiA0MHB4O1xuICBwYWRkaW5nOiAxMnB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBmb250LXNpemU6IDE2cHg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBjb2xvcjogd2hpdGU7XG4gIGdhcDogOHB4O1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoODlkZWcsICMwODdlZGEgLTIuOTklLCAjNTE5YmRiIDg3Ljc5JSk7XG59XG5cbi52aXJ0dWFscHJvZmVzc29yLWFuc3dlci1vdmVybGF5IHtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmctcmlnaHQ6IDRweDtcbn1cbi52aXJ0dWFscHJvZmVzc29yLWFuc3dlci1vdmVybGF5LmFjdGl2ZSB7XG4gIG1heC1oZWlnaHQ6IDU0dmg7XG4gIG92ZXJmbG93LXk6IHNjcm9sbDtcbn1cblxuLnZpcnR1YWxwcm9mZXNzb3Itc29jaWFscyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlYmViZWI7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDcycHg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG4udmlydHVhbHByb2Zlc3Nvci1zb2NpYWxpY29ucyB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IGF1dG87XG59XG5cbi52aXJ0dWFscHJvZmVzc29yLXNvY2lhbGJ1dHRvbnMge1xuICBwYWRkaW5nOiAxNXB4O1xuICB3aWR0aDogMzMlO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBkYXJrZ3JleTtcbiAgYm9yZGVyLXJhZGl1czogMTAwcHg7XG4gIGhlaWdodDogNDVweCAhaW1wb3J0YW50O1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBtYXJnaW4tbGVmdDogNXB4O1xuICBtYXJnaW4tcmlnaHQ6IDVweDtcbn1cblxuLnZpcnR1YWxwcm9mZXNzb3Itc29jaWFsbGlzdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDcycHg7XG59XG5cbi52aXJ0dWFscHJvZmVzc29yLWZvbGxvd2VycyB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbWFyZ2luLWxlZnQ6IDVweDtcbiAgZGlzcGxheTogbm9uZTtcbn1cblxuLnZpcnR1YWxwcm9mZXNzb3ItaWNvbmFuZHRleHQtdGV4dCB7XG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbn1cblxuLnZpcnR1YWxwcm9mZXNzb3ItYm9vc3RncmFkZXMge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZm9udC1zaXplOiAxNHB4O1xufVxuXG4udmlydHVhbHByb2Zlc3Nvci1ncmFkZWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7XG4gIHBhZGRpbmctbGVmdDogN3B4O1xuICBwYWRkaW5nLXJpZ2h0OiA3cHg7XG4gIHBhZGRpbmctdG9wOiAzcHg7XG4gIHBhZGRpbmctYm90dG9tOiAzcHg7XG4gIG1hcmdpbi1sZWZ0OiA1cHg7XG4gIG1hcmdpbi1yaWdodDogNXB4O1xuICBib3JkZXItcmFkaXVzOiAyNXB4O1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi52aXJ0dWFscHJvZmVzc29yLWdyYWRlYSB7XG4gIGJhY2tncm91bmQtY29sb3I6IHllbGxvd2dyZWVuO1xuICBwYWRkaW5nLWxlZnQ6IDdweDtcbiAgcGFkZGluZy1yaWdodDogN3B4O1xuICBwYWRkaW5nLXRvcDogM3B4O1xuICBwYWRkaW5nLWJvdHRvbTogM3B4O1xuICBtYXJnaW4tbGVmdDogNXB4O1xuICBtYXJnaW4tcmlnaHQ6IDVweDtcbiAgYm9yZGVyLXJhZGl1czogMjVweDtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4udmlydHVhbHByb2Zlc3Nvci1hbnN3ZXJzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIG92ZXJmbG93OiBhdXRvO1xuICAvKiBtYXgtaGVpZ2h0OiAyNTNweDsgKi9cbiAgbWluLWhlaWdodDogMjUzcHg7XG4gIC8qIG92ZXJmbG93OiBoaWRkZW4gIWltcG9ydGFudDsgKi9cbn1cblxuLnZpcnR1YWxwcm9mZXNzb3ItcXVpY2stbGVhcm4tdGV4dCB7XG4gIG1hcmdpbi10b3A6IGF1dG8gIWltcG9ydGFudDtcbiAgbWFyZ2luLWxlZnQ6IGF1dG8gIWltcG9ydGFudDtcbiAgbWFyZ2luLXJpZ2h0OiBhdXRvICFpbXBvcnRhbnQ7XG4gIG1hcmdpbi1ib3R0b206IGF1dG8gIWltcG9ydGFudDtcbn1cblxuLnZpcnR1YWxwcm9mZXNzb3ItYW5zd2Vyczo6LXdlYmtpdC1zY3JvbGxiYXIge1xuICBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7XG59XG5cbi52aXJ0dWFscHJvZmVzc29yLUFuc3dlcjo6LXdlYmtpdC1zY3JvbGxiYXIge1xuICBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7XG59XG5cbi52aXJ0dWFscHJvZmVzc29yLXF1aWNrbGVhcm46Oi13ZWJraXQtc2Nyb2xsYmFyIHtcbiAgZGlzcGxheTogbm9uZSAhaW1wb3J0YW50O1xufVxuXG4uc291cmNlVGV4dCB7XG4gIHRleHQtYWxpZ246IGNlbnRlciAhaW1wb3J0YW50O1xufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */</style><style>@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap);</style><style>.virtualprofessor-app-bg {
+  background-image: linear-gradient(to top, #1a456b, #0278d6);
+  font-family: 'Inter', sans-serif;
+}
+.virtualprofessor-app-header {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  border: 1px solid rgb(234 234 234 / 0.2);
+}
+.virtualprofessor-upgrade-feature-container {
+  margin: 28px 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.virtualprofessor-upgrade-feature-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 4px;
+}
+.virtualprofessor-upgrade-feature-box > span {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+}
+.virtualprofessor-upgrade-feature-btn-container {
+  padding: 0 30px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.virtualprofessor-upgrade-feature-btn {
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+.blue-btn-bg {
+  background: linear-gradient(89deg, #087eda -2.99%, #519bdb 87.79%);
+}
+.orange-btn-bg {
+  background: linear-gradient(89deg, #c92c17 -2.99%, #d97f1b 87.79%);
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9jb21wb25lbnRzL3BheVdhbGwuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsMkRBQTJEO0VBQzNELGdDQUFnQztBQUNsQztBQUNBO0VBQ0UsYUFBYTtFQUNiLHVCQUF1QjtFQUN2QixhQUFhO0VBQ2Isd0NBQXdDO0FBQzFDO0FBQ0E7RUFDRSxrQkFBa0I7RUFDbEIsYUFBYTtFQUNiLHNCQUFzQjtFQUN0QixTQUFTO0FBQ1g7QUFDQTtFQUNFLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsU0FBUztFQUNULGlCQUFpQjtBQUNuQjtBQUNBO0VBQ0UsZUFBZTtFQUNmLGdCQUFnQjtFQUNoQixZQUFZO0FBQ2Q7QUFDQTtFQUNFLG9CQUFvQjtFQUNwQixhQUFhO0VBQ2Isc0JBQXNCO0VBQ3RCLFNBQVM7QUFDWDtBQUNBO0VBQ0UsWUFBWTtFQUNaLGtCQUFrQjtFQUNsQixlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLFdBQVc7RUFDWCxhQUFhO0VBQ2IsYUFBYTtFQUNiLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsUUFBUTtFQUNSLFlBQVk7RUFDWixhQUFhO0VBQ2IsZ0NBQWdDO0VBQ2hDLGVBQWU7QUFDakI7QUFDQTtFQUNFLGtFQUFrRTtBQUNwRTtBQUNBO0VBQ0Usa0VBQWtFO0FBQ3BFIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCB1cmwoJ2h0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzMj9mYW1pbHk9SW50ZXI6d2dodEAzMDA7NDAwOzUwMDs2MDA7NzAwOzgwMCZmYW1pbHk9Um9ib3RvOndnaHRANDAwOzUwMDs3MDAmZGlzcGxheT1zd2FwJyk7XG5cbi52aXJ0dWFscHJvZmVzc29yLWFwcC1iZyB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICMxYTQ1NmIsICMwMjc4ZDYpO1xuICBmb250LWZhbWlseTogJ0ludGVyJywgc2Fucy1zZXJpZjtcbn1cbi52aXJ0dWFscHJvZmVzc29yLWFwcC1oZWFkZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgcGFkZGluZzogMjRweDtcbiAgYm9yZGVyOiAxcHggc29saWQgcmdiKDIzNCAyMzQgMjM0IC8gMC4yKTtcbn1cbi52aXJ0dWFscHJvZmVzc29yLXVwZ3JhZGUtZmVhdHVyZS1jb250YWluZXIge1xuICBtYXJnaW46IDI4cHggMCA0cHg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGdhcDogMTJweDtcbn1cbi52aXJ0dWFscHJvZmVzc29yLXVwZ3JhZGUtZmVhdHVyZS1ib3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBnYXA6IDEwcHg7XG4gIHBhZGRpbmctbGVmdDogNHB4O1xufVxuLnZpcnR1YWxwcm9mZXNzb3ItdXBncmFkZS1mZWF0dXJlLWJveCA+IHNwYW4ge1xuICBmb250LXNpemU6IDE4cHg7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cbi52aXJ0dWFscHJvZmVzc29yLXVwZ3JhZGUtZmVhdHVyZS1idG4tY29udGFpbmVyIHtcbiAgcGFkZGluZzogMCAzMHB4IDM2cHg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGdhcDogMTRweDtcbn1cbi52aXJ0dWFscHJvZmVzc29yLXVwZ3JhZGUtZmVhdHVyZS1idG4ge1xuICBjb2xvcjogd2hpdGU7XG4gIGJvcmRlci1yYWRpdXM6IDhweDtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBmb250LXdlaWdodDogNTAwO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMTZweDtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogMnB4O1xuICBib3JkZXI6IG5vbmU7XG4gIG91dGxpbmU6IG5vbmU7XG4gIGZvbnQtZmFtaWx5OiAnSW50ZXInLCBzYW5zLXNlcmlmO1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG4uYmx1ZS1idG4tYmcge1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoODlkZWcsICMwODdlZGEgLTIuOTklLCAjNTE5YmRiIDg3Ljc5JSk7XG59XG4ub3JhbmdlLWJ0bi1iZyB7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg4OWRlZywgI2M5MmMxNyAtMi45OSUsICNkOTdmMWIgODcuNzklKTtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style></head>
+<body data-new-gr-c-s-check-loaded="14.1101.0" data-gr-ext-installed="">
     <header> 
                     
 	<div class="logo">PANTHER RAPIDS</div>
@@ -496,15 +868,13 @@
             <h2 class="section-title">About Panther Rapids</h2>
             <div class="row">
                 <div class="col">
-                    <p>Panther Rapids Recreational Development: Investing in Charleston’s Future
-Panther Rapids is an exciting multi-phase recreational project designed to transform Charleston's Embarras River into a vibrant hub for outdoor activities, economic growth, and environmental restoration. This initiative will provide a dynamic space for kayaking, riverside relaxation, trails, and community gathering spots, benefiting residents and attracting visitors from across the region..</p>
-                    <p>The project represents a strategic public-private partnership opportunity with significant ROI potential and community benefits spanning recreation, education, tourism, and environmental conservation.</p>
+                    <p>Investing in Charleston’s future Panther Rapids is an exciting multi-phase recreational project designed to transform Charleston's Embarras River into a vibrant hub for outdoor activities, economic growth, and environmental restoration. This initiative will provide a dynamic space for kayaking, riverside relaxation, trails, and community gathering spots, benefiting residents and attracting visitors from across the region. The project represents a strategic public-private partnership opportunity with significant ROI potential and community benefits spanning recreation, education, tourism, and environmental conservation.</p>
                 </div>
                 <div class="col">
                     <div class="feature-img">
                         <img src="Panther-Rapids.jpg" alt="Main Photo" style="
-    height: 200px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
 "> 
                     </div>
                 </div>
@@ -546,8 +916,8 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
                     <div class="feature-card">
                         <div class="feature-img">
                             <img src="River-open.jpg" alt="Natural habitat" style="
-    width: 500px;
-    height: 250px;
+    width: 100%;
+    height: 100%;
 ">
                         </div>
                         <div class="feature-content">
@@ -609,73 +979,64 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <h3>2025-2026</h3>
-                        <p>Planning and Partner Development</p>
+                        <p>Further Planning &amp; Permit Approvals
+
+</p>
                         <ul>
-                            <li>Concept approval</li>
-                            <li>Development partner recruitment</li>
-                            <li>Master planning process</li>
+                            <li>Grants Applications</li>
+                            <li>Permits</li>
+                            <li>Feasibility Study</li>
                         </ul>
                     </div>
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-content">
-                        <h3>2026-2027</h3>
-                        <p>Funding Acquisition</p>
+                        <h3>2027-2028</h3>
+                        <p>Foundation</p>
                         <ul>
-                            <li>State and federal grant applications</li>
-                            <li>Public-private partnership structuring</li>
-                            <li>Philanthropic campaign development</li>
-                        </ul>
+                            <li>Road Access</li>
+                            <li>Basic Infastructure</li>
+                            <li>Parking Lot &amp; Walkways</li>
+                        <li>Picnic tables</li><li>Restrooms</li></ul>
                     </div>
                 </div>
                 <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>2027-2028</h3>
-                        <p>Phase 1: Foundation</p>
-                        <ul>
-                            <li>Site preparation and basic access</li>
-                            <li>Initial trail development</li>
-                            <li>Environmental enhancement</li>
-                            <li>Utility infrastructure</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item right">
                     <div class="timeline-content">
                         <h3>2028-2029</h3>
                         <p>Phase 2: Core Recreation</p>
                         <ul>
-                            <li>Kayak surfing rapid construction</li>
-                            <li>Beach area development</li>
-                            <li>Primary trail network completion</li>
-                            <li>Basic amenities installation</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>2029-2030</h3>
-                        <p>Phase 3: Commercial Development</p>
-                        <ul>
-                            <li>Cafe construction</li>
-                            <li>Outdoor eating area development</li>
-                            <li>Equipment rental facility</li>
-                            <li>Enhanced visitor amenities</li>
+                            <li>Core Recreation</li>
+                            <li>Rapid Surfing</li>
+                            
+                            
                         </ul>
                     </div>
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-content">
-                        <h3>Beyond 2030</h3>
-                        <p>Phase 4: Expansion &amp; Enhancement</p>
+                        <h3>2029-2030</h3>
+                        <p>Phase 3: Commercial Development </p>
                         <ul>
-                            <li>Additional recreational features</li>
-                            <li>Expanded programming</li>
-                            <li>Advanced amenities</li>
-                            <li>Long-term habitat improvements</li>
+                            <li>Commercial Facilities</li>
+                            <li>restaurants</li>
+                            <li>Shops</li>
+                            
                         </ul>
                     </div>
                 </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2030+</h3>
+                        <p>Phase 4: Expansion/Enhancement</p>
+                        <ul>
+                            <li>Enhanced Amenities</li>
+                            <li>Expansion</li>
+                            
+                            
+                        </ul>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
@@ -686,7 +1047,10 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
             <div class="team-grid">
                 <div class="team-member">
                     <div class="team-photo">
-                        <img src="/api/placeholder/150/150" alt="Team member">
+                        <img src="teamphoto.jpg" alt="Team member" style="
+    width: 100%;
+    height: 100%;
+">
                     </div>
                     <h3 class="team-name">Evan Kubicek</h3>
                     <div class="team-role">Project Director</div>
@@ -694,7 +1058,10 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
                 </div>
                 <div class="team-member">
                     <div class="team-photo">
-                        <img src="/api/placeholder/150/150" alt="Team member">
+                        <img src="teamphoto.jpg" alt="Team member" style="
+    width: 100%;
+    height: 100%;
+">
                     </div>
                     <h3 class="team-name">Luisa Renovales</h3>
                     <div class="team-role">Team 1: Environmental Assessment &amp; Site Analysis</div>
@@ -702,7 +1069,10 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
                 </div>
                 <div class="team-member">
                     <div class="team-photo">
-                        <img src="/api/placeholder/150/150" alt="Team member">
+                        <img src="teamphoto.jpg" alt="Team member" style="
+    width: 100%;
+    height: 100%;
+">
                     </div>
                     <h3 class="team-name">Ben Marshall</h3>
                     <div class="team-role">Team 2: Legal &amp; Regulatory Framework</div>
@@ -710,7 +1080,10 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
                 </div>
                 <div class="team-member">
                     <div class="team-photo">
-                        <img src="/api/placeholder/150/150" alt="Team member">
+                        <img src="teamphoto.jpg" alt="Team member" style="
+    width: 100%;
+    height: 100%;
+">
                     </div>
                     <h3 class="team-name">Alicia Ramirez</h3>
                     <div class="team-role">Team 3: Recreational Facilities Design</div>
@@ -718,7 +1091,10 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
                 </div>
                 <div class="team-member">
                     <div class="team-photo">
-                        <img src="" alt="Team member">
+                        <img src="teamphoto.jpg" alt="Team member" style="
+    width: 100%;
+    height: 100%;
+">
                     </div>
                     <h3 class="team-name">Collin Tyson</h3>
                     <div class="team-role">Team 4: Commercial Development</div>
@@ -726,7 +1102,10 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
                 </div>
                 <div class="team-member">
                     <div class="team-photo">
-                        <img src="/api/placeholder/150/150" alt="Team member">
+                        <img src="teamphoto.jpg" alt="Team member" style="
+    width: 100%;
+    height: 100%;
+">
                     </div>
                     <h3 class="team-name">Shane Atchison</h3>
                     <div class="team-role">Team 5: Economic Analysis</div>
@@ -734,7 +1113,10 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
                 </div>
                 <div class="team-member">
                     <div class="team-photo">
-                        <img src="/api/placeholder/150/150" alt="Team member">
+                        <img src="teamphoto.jpg" alt="Team member" style="
+    width: 100%;
+    height: 100%;
+">
                     </div>
                     <h3 class="team-name">Alexis Davis</h3>
                     <div class="team-role">Team 6: Funding &amp; Implementation</div>
@@ -742,7 +1124,10 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
                 </div>
                 <div class="team-member">
                     <div class="team-photo">
-                        <img src="/api/placeholder/150/150" alt="Team member">
+                        <img src="teamphoto.jpg" alt="Team member" style="
+    width: 100%;
+    height: 100%;
+">
                     </div>
                     <h3 class="team-name">Joe McNab</h3>
                     <div class="team-role">Team 7: Community Engagement &amp; Marketing</div>
@@ -859,4 +1244,4 @@ Panther Rapids is an exciting multi-phase recreational project designed to trans
         <p class="copyright">© 2025 Panther Rapids Development Project. All rights reserved.</p>
     </footer>
 
-</body></html>   
+   <div></div><div id="ct-text-selector"></div><div id="ct-quick-tab"></div><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></body></html>
